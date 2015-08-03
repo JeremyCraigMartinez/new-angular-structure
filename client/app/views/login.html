@@ -1,0 +1,159 @@
+<div class="frame">
+<!-- Welcome title and description -->
+
+  <div class="bit-25">
+      <h1>Wearable Sensors Project</h1>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p> 
+      </div>
+
+
+
+<!-- Forms -->
+  <div class="bit-10"></div>
+  <div class="bit-65">
+
+    <!-- Left Column -->
+    <div>
+      <!-- Form: Sign in --> 
+      <div class="form col-md-8 col-md-offset-2">
+        <h2 class="form-heading">Sign in <span ng-if="failedLogin===true" style="color:red; font-size:medium;">incorrect login</span></h2>
+        <form role="form" ng-submit="submitLogin()" role="form">
+          <div class="form-group">
+            <label for="login.email" class="control-label">Email</label>
+            <input type="email" ng-model="login.email" id="login.email" class="form-control" 
+            placeholder="Enter your email address" required autofocus>
+          </div>
+
+          <div class="form-group">
+            <label for="login.password" class="control-label">Password</label>
+            <input type="password" id="login.password" class="form-control" 
+            placeholder="Enter your password" ng-model="login.password" required>
+
+          <div ng-if="new_member">
+            <div class="form-group">
+              <label for="inputfirst_name" class="control-label">First Name</label>
+              <input id="inputfirst_name" class="form-control" 
+              ng-model="signup.first_name" placeholder="Enter your first name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="inputlast_name" class="control-label">Last Name</label>
+              <input id="inputlast_name" class="form-control" 
+              ng-model="signup.last_name" placeholder="Enter your last name" required>
+            </div>
+
+            <!-- Determine User Type: Doctor or Patient? -->
+            
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="userType" value="doctor" ng-model="signup.type"/>Clinician
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="userType" value="patient" ng-model="signup.type"/>Patient
+              </label>
+            </div>
+
+            <!-- Doctor Information -->
+            <div id="doctor-info" ng-if="signup.type==='doctor'">
+              <div class="form-group">
+                <label for="Hospital" class="control-label">Hospital</label>
+                <input id="Hospital" class="form-control" 
+                ng-model="signup.hospital" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label for="Specialty" class="control-label">Specialty</label>
+                <input id="Specialty" class="form-control" 
+                ng-model="signup.specialty" placeholder="" required>
+              </div>
+            </div><!-- /Doctor Information -->
+
+            <!-- Patient Information -->
+            <div id="patient-info" ng-if="signup.type==='patient'">
+              <div class="form-group">
+                <label for="inputAge" class="control-label">Age (years)</label>
+                <input type="number" min="0" step="1" 
+                id="inputAge" class="form-control" ng-model="signup.age" 
+                placeholder="Enter your age in years" required>
+              </div>
+
+              <div class="form-group">
+                <label for="inputHeight" class="control-label">Height (in)</label>
+                <input type="number"  min="0" step="1" 
+                id="inputHeight" class="form-control" ng-model="signup.height" 
+                placeholder="Enter your height in inches" required>
+              </div>
+
+              <div class="form-group form-inline">
+                <label for="inputWeight" class="control-label">Weight (lb)</label>
+                <input type="number"  min="0" step="1" 
+                id="inputWeight" class="form-control" ng-model="signup.weight" 
+                placeholder="Enter your weight in pounds" required>
+              </div>
+
+              <div class="form-group" required>
+                <label for="inputSex" class="radio-inline">
+                  <input type="radio" name="sex" ng-model="signup.sex" value="male" required/>Male
+                </label>
+                <label for="inputSex" class="radio-inline">
+                  <input type="radio" name="sex" ng-model="signup.sex" value="female" />Female
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label for="inputGroup" class="control-label">Group</label>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                    </tr>
+                  </head>
+                  <tbody>
+                    <tr ng-repeat="group in selected_groups track by $index">
+                      <td>
+                        <a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a> {{group}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <select id="inputGroup" class="form-control" ng-model="signup.group" ng-options="g as g for g in groups" ng-change="setGroup(signup.group)">
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inputDoctor" class="control-label">Doctor</label>
+                <select id="inputDoctor" class="form-control" ng-model="signup.doctor" ng-options="doc.full_name for doc in list_of_doctors">
+                  <option value="doctor.email"></option>
+                </select>
+              </div>
+              
+            </div><!-- /Patient Information -->
+
+          </div>  
+
+            <br>
+            <a class="forgot" href="">Forgot password?</a>
+            <hr>
+            <label class="control-label">
+              <input type="checkbox" value="remember-me">
+              <span>Remember me</span>
+            </label>
+            <label class="control-label">
+              <input ng-model="new_member" type="checkbox" value="remember-me">
+              <span>Not a member? Sign up</span>
+            </label>
+            <hr>
+          </div>
+
+          <div class="form-group">
+            <button style="width:250px;" class="btn btn-primary btn-block" type="submit">Sign in</button>
+          </div>
+        </form><!-- /Form: Sign in -->
+      </div><!-- /Form Container -->
+    </div><!-- /Left Column -->
+
+        </form><!-- /Form: Create Account -->
+      </div><!-- Form Container -->
+    </div><!-- /Right Column -->
+
+  </div><!-- /row -->
+</div>

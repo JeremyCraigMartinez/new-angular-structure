@@ -7,48 +7,48 @@
 
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/lemonade/css/lemonade.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <link href="styles/homepage.css" rel="stylesheet" type="text/css">
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="container">
-  <p><i>Best viewed in pop-out mode to see location changes. Click blue button on the right.</i></p>
-
-  <div class="navbar">
-    <div class="navbar-inner">
-      <a class="brand" href="#">Quick Start</a>
-      <ul class="nav">
-        <li><a ui-sref="state1">Route 1</a></li>
-        <li><a ui-sref="state2">Route 2</a></li>
-      </ul>
-    </div>
+<body>
+  <div class="well">
+    <div class="navbar" data-ng-include=" 'views/partials/navbar.html' "></div>
   </div>
 
-  <div class="row">
-    <div class="span12">
-      <div class="well" ui-view></div>        
-    </div>
-  </div>         
-  
-  
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <div >
+    <div ui-view></div>
+  </div>
+     
 
-    <script src="scripts/app.js"></script>
-    <script src="scripts/config.lazyload.js"></script>
-    <script src="scripts/config.router.js"></script>
 
-    <!-- Controllers -->
-    <script src="scripts/controllers/state1.js"></script>
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+  <script src="bower_components/ng-slide-down/dist/ng-slide-down.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/config.lazyload.js"></script>
+  <script src="scripts/config.router.js"></script>
+
+  <!-- Controllers -->
+  <script src="scripts/controllers/AppCtrl.js"></script>
+  <script src="scripts/controllers/LoginCtrl.js"></script>
+
+  <!-- Directives -->
+  <script src="scripts/directives/navbar.js"></script>
+  <script src="scripts/directives/sidebar.js"></script>
+  <script src="scripts/directives/login.js"></script>
 
 </body>
 

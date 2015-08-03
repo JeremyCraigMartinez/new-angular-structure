@@ -4,13 +4,18 @@ var clientApp = angular.module('clientApp', ["ui.router"]);
 clientApp.config(function($stateProvider, $urlRouterProvider){
   
   // For any unmatched url, send to /route1
-  $urlRouterProvider.otherwise("/state1");
+  $urlRouterProvider.otherwise("/app");
   
   $stateProvider
-    .state('state1', {
-        url: "/state1",
-        templateUrl: 'views/partials/state1.html',
-        controller: 'State1Ctrl'
+    .state('app', {
+        url: "/app",
+        templateUrl: 'views/app.html',
+        controller: 'AppController'
+    })
+    .state('login', {
+        url: "/login",
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
     })
     .state('state1.list', {
         url: "/list",
