@@ -1,6 +1,6 @@
 'use strict';
 
-var clientApp = angular.module('clientApp', ["ui.router"]);
+var clientApp = angular.module('clientApp', ["ui.router","ngCookies"]);
 clientApp.config(function($stateProvider, $urlRouterProvider){
   
   // For any unmatched url, send to /route1
@@ -16,6 +16,19 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         url: "/login",
         templateUrl: 'views/login.html',
         controller: 'LoginController'
+    })
+    .state('about', {
+        url: "/about",
+        templateUrl: 'views/about.html'
+    })
+    .state('contact', {
+        url: "/contact",
+        templateUrl: 'views/contact.html'
+    })
+    .state('doctors_home', {
+        url: "/doctors_home",
+        templateUrl: 'views/doctors_home.html',
+        controller: 'DoctorsHomeController'
     })
     .state('state1.list', {
         url: "/list",

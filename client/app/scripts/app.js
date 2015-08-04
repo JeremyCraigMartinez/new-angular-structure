@@ -1,4 +1,5 @@
 'use strict';
 angular.module('clientApp', [
-    'ui.router'
+    'ui.router',
+    'cookiesProvider'
 ])

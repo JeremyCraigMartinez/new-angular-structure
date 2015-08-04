@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="clientApp">
+<html>
 
 <head>
     <title>AngularJS: UI-Router Quick Start</title>
@@ -15,12 +15,12 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body ng-app="clientApp">
   <div class="well">
     <div class="navbar" data-ng-include=" 'views/partials/navbar.html' "></div>
   </div>
 
-  <div >
+  <div class="main-app" style="padding-left:100px; padding-right:100px;">
     <div ui-view></div>
   </div>
      
@@ -34,21 +34,32 @@
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
   <script src="bower_components/ng-slide-down/dist/ng-slide-down.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
   <script src="scripts/app.js"></script>
   <script src="scripts/config.lazyload.js"></script>
   <script src="scripts/config.router.js"></script>
+  <script src="scripts/run.js"></script>
 
   <!-- Controllers -->
   <script src="scripts/controllers/AppCtrl.js"></script>
   <script src="scripts/controllers/LoginCtrl.js"></script>
+  <script src="scripts/controllers/DoctorsHomeCtrl.js"></script>
 
   <!-- Directives -->
   <script src="scripts/directives/navbar.js"></script>
   <script src="scripts/directives/sidebar.js"></script>
   <script src="scripts/directives/login.js"></script>
+
+  <!-- Services -->
+  <script src="scripts/services/Base64.js"></script>
+  <script src="scripts/services/LoginService.js"></script>
+  <script src="scripts/services/PatientService.js"></script>
+  <script src="scripts/services/ProfileService.js"></script>
+  <script src="scripts/services/GroupService.js"></script>
+  <script src="scripts/services/DoctorService.js"></script>
 
 </body>
 
