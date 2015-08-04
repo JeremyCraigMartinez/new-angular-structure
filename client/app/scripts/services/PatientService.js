@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-	.service('PatientService', function($http, $q, LoginService, $rootScope, $cookieStore) {
+	.service('PatientService', function ($http, $q, LoginService, $rootScope, $cookieStore, $state) {
 		this.patients = function() {
 			var deferred = $q.defer();
 			$http({
@@ -83,21 +83,6 @@ angular.module('clientApp')
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
-				LoginService.set_credentials(new_info.email || null, new_info.password || null).then(function (userr) {
-					if (user===false)
-						$location.path('/login');
-					console.log(user);
-				});
-				/*
-				LoginService.logout().then(function() {
-					console.log($cookieStore.get('user'));
-
-					LoginService.login(new_info.email || $rootScope.globals.email, new_info.password || null).then(function (user) {
-						if (user===false) {
-							$location.path('/login');
-						}
-					});
-				});*/
 			})
 			.catch(function(error) {
 				if (error.status === 404) {

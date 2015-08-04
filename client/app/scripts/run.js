@@ -1,5 +1,7 @@
+'use strict';
+
 var clientApp = angular.module('clientApp');
-clientApp.run(function ($cookies, $http, $rootScope, $location, $state) {
+clientApp.run(function ($cookies, $http, $rootScope, $location, $state, $stateParams) {
 	// keep user logged in after page refresh
   $rootScope.globals = {};
   $rootScope.globals.currentUser = $cookies.get('currentUser') || null;

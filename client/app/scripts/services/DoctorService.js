@@ -31,12 +31,13 @@ angular.module('clientApp')
 			})
 			.then(function(res) {
 				LoginService.login(info.email, info.password).then(function (user) {
-					deferred.resolve(res.data);
+					deferred.resolve(null, res.data);
 				});
 			})
 			.catch(function(error) {
 				console.log('doctor signup error');
 				console.log(error);
+				deferred.resolve(error, null);
 			});
 			return deferred.promise;
 		}
@@ -59,6 +60,51 @@ angular.module('clientApp')
 			});
 			return deferred.promise;
 		}
+		this.update_info = function(new_info) {
+			var deferred = $q.defer();
+			$http({
+				method: "PUT",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctors/update_info",
+				data: new_info
+			})
+			.then(function(res) {
+				console.log(new_info);
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('could not update info of: '+id);
+					deferred.reject(error);
+				}
+				else 
+					console.log(error);
+			});
+			return deferred.promise;
+		}
+		this.update_account = function(new_info) {
+			var deferred = $q.defer();
+			console.log(new_info);
+			
+			$http({
+				method: "PUT",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctors/update_account",
+				data: new_info
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+				var success = LoginService.setToken(new_info.email || null, new_info.password || null);
+				if (success) { $state.go('login'); }
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('could not update info of: '+id);
+					deferred.reject(error);
+				}
+				else 
+					console.log(error);
+			});
+			return deferred.promise;
+		}		
 		this.remove = function(id) {
 			var deferred = $q.defer();
 			$http({

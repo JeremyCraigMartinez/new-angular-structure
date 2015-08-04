@@ -1,0 +1,259 @@
+<!-- Welcome title and description -->
+
+<h1>Account</h1>
+<hr>
+
+<div class="frame">
+  <div class="bit-3 row">
+    <div>
+    	<img style="width:85%; height:85%;" src="http://blogdailyherald.com/wp-content/uploads/2014/10/wallpaper-for-facebook-profile-photo-1024x645.jpg">
+    </div>
+  </div><!-- /row -->
+  <div class="bit-2">
+		<table class="table table-striped">
+			<thead>
+				<th width="20%">field</th>
+				<th>data</th>
+				<th width="20%"></th>
+			</thead>
+			<!-- row -->
+			<tr>
+				<td>
+					First Name
+				</td>
+				<td>
+					{{first_name}}
+					<!-- Modal -->
+					<div class="modal fade" id="first_name" tabindex="-1" role="dialog" aria-labelledby="first_nameLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="first_nameLabel">Enter new first name</h4>
+					      </div>
+					      <div class="modal-body">
+					        <input ng-model="new_fields['first_name']" type="text" class="form-control">
+					      </div>
+					      <div class="modal-footer">
+					        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+					        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button href="#" ng-click="changeField('first_name')" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</td>
+				<td width="20%">
+		      <a data-toggle="modal" data-target="#first_name" href="#">change me</a>
+				</td>
+			</tr>
+			<!-- row -->
+			<tr>
+				<td>
+					Last Name
+				</td>
+				<td>
+					{{last_name}}
+					<!-- Modal -->
+					<div class="modal fade" id="last_name" tabindex="-1" role="dialog" aria-labelledby="last_nameLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="last_nameLabel">Enter new last name</h4>
+					      </div>
+					      <div class="modal-body">
+					        <input ng-model="new_fields['last_name']" type="text" class="form-control">
+					      </div>
+					      <div class="modal-footer">
+					        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+					        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button href="#" ng-click="changeField('last_name')" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</td>
+				<td width="20%">
+		      <a data-toggle="modal" data-target="#last_name" href="#">change me</a>
+				</td>
+			</tr>
+			<!-- row -->
+			<tr>
+				<td>
+					Email
+				</td>
+				<td>
+					{{email}}
+					<!-- Modal -->
+					<div class="modal fade" id="email" tabindex="-1" role="dialog" aria-labelledby="emailLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="emailLabel">Enter new email</h4>
+					      </div>
+					      <div class="modal-body">
+					        <input ng-model="new_fields['email']" type="text" placeholder="New email here..." class="form-control"><br>
+					      </div>
+					      <div class="modal-footer">
+					        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+					        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button href="#" ng-click="changeField('email')" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</td>
+				<td width="20%">
+		      <a data-toggle="modal" data-target="#email" href="#">change me</a>
+				</td>
+			</tr>
+			<!-- row -->
+			<tr>
+				<td>
+					Password
+				</td>
+				<td>
+					***********
+					<!-- Modal -->
+					<div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="passwordLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title" id="passwordLabel">Enter new password</h4>
+					      </div>
+					      <div class="modal-body">
+					        <input ng-model="new_fields['pass']" type="password" class="form-control" placeholder="enter new password..."><br>
+					        <input ng-model="new_fields['password_second']" type="password" class="form-control" placeholder="enter new password again...">
+					      </div>
+					      <div class="modal-footer">
+					        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+					        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button ng-show="new_fields['pass']===new_fields['password_second'] && new_fields['pass']" href="#" ng-click="changeField('pass')" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+					        <button ng-hide="new_fields['pass']===new_fields['password_second']" type="button" class="btn btn-primary" data-dismiss="modal" disabled>Password's Don't Match</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</td>
+				<td width="20%">
+		      <a data-toggle="modal" data-target="#password" href="#">change me</a>
+				</td>
+			</tr>
+			<!-- row -->
+			<tr ng-repeat-start="(key,field) in account_info">
+				<td>
+					{{key}}
+				</td>
+				<td>
+					{{field}}
+					<!-- groups -->
+					<div ng-if="key === 'group'">
+						<div class="modal fade" id="{{key}}" tabindex="-1" role="dialog" aria-labelledby="{{key}}Label" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="{{key}}Label">Enter booger new {{key}}</h4>
+						      </div>
+						      <div class="modal-body">
+										<div class="form-group">
+										  <label for="inputGroup" class="control-label">Group</label>
+										  <table class="table table-striped">
+										    <thead>
+										      <tr>
+										        <th></th>
+										      </tr>
+										    </head>
+										    <tbody>
+										      <tr ng-repeat="group in selected_groups track by $index">
+										        <td>
+										          <a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a> {{group}}
+										        </td>
+										      </tr>
+										    </tbody>
+										  </table>
+										  <select id="inputGroup" class="form-control" ng-model="new_fields[key]" ng-options="g as g for g in list_of_groups" ng-change="setGroup(new_fields[key])">
+										  </select>
+										</div>
+						        <!--<input ng-model="new_fields[key]" type="text" class="form-control"></input>-->
+						      </div>
+						      <div class="modal-footer">
+						        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+						        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button href="#" ng-click="changeField(key, selected_groups)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+					<!-- sex -->
+					<div ng-if="key === 'sex'">
+						<div class="modal fade" id="{{key}}" tabindex="-1" role="dialog" aria-labelledby="{{key}}Label" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="{{key}}Label">Enter snot new {{key}}</h4>
+						      </div>
+						      <div class="modal-body">
+						        <!--<input ng-model="new_fields[key]" type="text" class="form-control"></input>-->
+						        <!--<select ng-model="new_fields[key]">-->
+						        	<input ng-model="new_fields[key]" value="male" type="radio">
+						        	<input ng-model="new_fields[key]" value="female" type="radio">
+						        <!--</select>-->
+						      </div>
+						      <div class="modal-footer">
+						        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+						        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button href="#" ng-click="changeField(key)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+					<!-- everything else -->
+					<div ng-if="key != 'sex' && key != 'group'">
+						<div class="modal fade" id="{{key}}" tabindex="-1" role="dialog" aria-labelledby="{{key}}Label" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="{{key}}Label">Enter new {{key}}</h4>
+						      </div>
+						      <div class="modal-body">
+						        <input ng-model="new_fields[key]" type="text" class="form-control">
+						      </div>
+						      <div class="modal-footer">
+						        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+						        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button href="#" ng-click="changeField(key)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</td>
+				<td width="20%">
+		      <a data-toggle="modal" data-target="#{{key}}" href="#">change me</a>
+				</td>
+			</tr>
+			<tr ng-repeat-end></tr>
+		</table>
+	</div>
+	<hr>
+
+</div>
+<hr>
+<a id="deleteAccount" style="color:red;" href="#" ng-click="deleteAccount()">delete account</a>
+<hr>
+

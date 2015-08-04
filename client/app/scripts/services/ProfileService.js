@@ -10,11 +10,12 @@ angular.module('clientApp')
 				data: info
 			})
 			.then(function(res) {
-				deferred.resolve(res.data);
+				deferred.resolve(null, res.data);
 			})
 			.catch(function(error) {
 				console.log('patient signup error');
 				console.log(error);
+				deferred.resolve(error, null);
 			});
 			return deferred.promise;
 		}

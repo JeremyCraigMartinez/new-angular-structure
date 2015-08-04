@@ -20,22 +20,39 @@ angular.module('clientApp')
 				})
 				.then(function (res) {
 					service.setToken(email, password, res.data.type);
-					deferred.resolve(res.data);
+					deferred.resolve(null, res.data);
 				})
 				.catch(function (error) {
-					clear_credentials(this);
+					service.setToken(null);
 					console.log('auth failed for '+email+":"+password);
+					deferred.resolve(error, null);
+				});
+
+				return deferred.promise;
+			};
+
+			this.authenticated = function(email, password) {
+				var deferred = $q.defer();
+
+				$http({
+					method: "POST",
+					url: "https://dev.api.wsuhealth.wsu.edu:5025/auth",
+					data: {email:email,password:password}
+				})
+				.then(function (res) {
+					deferred.resolve(true);
+				})
+				.catch(function (error) {
 					deferred.resolve(false);
 				});
 
 				return deferred.promise;
-			}
+			};
 
 			this.setToken = function (newEmail, newPassword, newType) {
 				type = newType;
 				email = newEmail;
-
-				console.log($cookies.get('type'));
+				console.log(newType);
 
 				if (newType != null) {
 					//var expireDate = new Date();
@@ -53,7 +70,8 @@ angular.module('clientApp')
 					}
 					$http.defaults.headers.common['Authorization'] = 'Basic '+authdata;
 
-					$rootScope.$broadcast("currentUser:set", {type:$cookies.get('type'),email:$cookies.get('email')});					
+					$rootScope.$broadcast("currentUser:set", {type:$cookies.get('type'),email:$cookies.get('email')});
+					return true;					
 				}
 				else {
 					$cookies.remove("type");
@@ -63,22 +81,23 @@ angular.module('clientApp')
 					$rootScope.$broadcast("currentUser:unset");
 
 					$http.defaults.headers.common['Authorization'] = 'Basic '+null;
+					return false;
 				}
 				
-			}
+			};
 
 			this.getType = function () {
 				return $cookies.get('type');
-			}
+			};
 
 			this.getEmail = function () {
 				return $cookies.get('email');
-			}
+			};
 
 			this.logout = function() {
 				var deferred = $q.defer();				
 				service.setToken(null);
 				deferred.resolve(null);
 				return deferred.promise;
-			}
+			};
 		});

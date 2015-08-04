@@ -19,7 +19,7 @@ angular.module('clientApp')
 				}
 				$q.all(all).then(function (doctors_info) {
 					for (var doctor in doctors_info) {
-						doctors_info[doctor].full_name = doctors_info[doctor].first_name + " " + doctors_info[doctor].last_name
+						doctors_info[doctor].full_name = doctors_info[doctor].first_name + " " + doctors_info[doctor].last_name;
 					}
 					$scope.list_of_doctors = doctors_info;
 				});
@@ -38,7 +38,7 @@ angular.module('clientApp')
 				$scope.signup.group = null;
 				$scope.groups.push(group);
 				$scope.selected_groups.splice($scope.selected_groups.indexOf(group),1);
-			}
+			};
 
 			$scope.selected_groups = [];
 			$scope.setGroup = function(group){
@@ -57,13 +57,13 @@ angular.module('clientApp')
 					$scope.submitSignup(member_info);
 				}
 				else {
-					$scope.submitLogin($scope.login)
+					$scope.submitLogin($scope.login);
 				}
-			}
+			};
 
 			$scope.submitSignup = function (signup) {
 				if (signup.type === "doctor") {
-					DoctorService.add_doctor(signup).then(function (data, user) {
+					DoctorService.add_doctor(signup).then(function (error, data) {
 						console.log(signup.email);
 						console.log(signup.pass);
 						LoginService.login(signup.email, signup.pass).then(function (user) {
@@ -79,9 +79,9 @@ angular.module('clientApp')
 					});
 				}
 				else if (signup.type === "patient") {
-					signup["doctor"] = signup.doctor.email
+					signup.doctor = signup.doctor.email;
 					signup.group = $scope.selected_groups;
-					ProfileService.add_patient(signup).then(function (user) {
+					ProfileService.add_patient(signup).then(function (error, data) {
 						console.log(signup.email);
 						console.log(signup.pass);
 						LoginService.login(signup.email, signup.pass).then(function (user) {
@@ -96,21 +96,22 @@ angular.module('clientApp')
 						});
 					});
 				}
-			}
+			};
 
 			$scope.submitLogin = function() {
-				LoginService.login($scope.login.email, $scope.login.password).then(function (user) {
-					if (user===false) {
+				LoginService.login($scope.login.email, $scope.login.password).then(function (err, user) {
+					if (err) {
 						$scope.failedLogin=true;
 						$state.go('login');
 					}
 					else {
-						$scope.user = user;
-						if (user.type === "doctor") $state.go('doctors_home');
-						else if (user.type === "admin") $state.go('admin');
-						else if (user.type === "patient") $state.go('patient_home');
+						var type = LoginService.getType();
+						console.log(type);
+						if (type === "doctor") { $state.go('doctors_home'); }
+						else if (type === "admin") { $state.go('app'); }
+						else if (type === "patient") { $state.go('app'); }
 					}
 				});
-			}
+			};
 
 		});

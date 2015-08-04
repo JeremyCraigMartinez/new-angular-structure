@@ -30,6 +30,36 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/doctors_home.html',
         controller: 'DoctorsHomeController'
     })
+    .state('patients_home', {
+        url: "/patients_home",
+        templateUrl: 'views/patients_home.html',
+        controller: 'PatientsHomeController'
+    })
+    .state('groups', {
+        url: "/groups",
+        templateUrl: 'views/groups.html',
+        controller: 'GroupController'
+    })
+    .state('patient_profile', {
+        url: "/patient_profile/:id",
+        templateUrl: 'views/patient_profile.html',
+        controller: 'PatientProfileController'
+    })
+    .state('patient_profile.diet', {
+        url: "/patient_profile/:id/diet",
+        templateUrl: 'views/partials/patient_profile.diet.html',
+        controller: 'DietController'
+    })
+    .state('patient_profile.activity', {
+        url: "/patient_profile/:id/activity",
+        templateUrl: 'views/partials/patient_profile.activity.html',
+        controller: 'ActivityController'
+    })
+    .state('account', {
+        url: "/account",
+        templateUrl: 'views/account.html',
+        controller: 'AccountController'
+    })
     .state('state1.list', {
         url: "/list",
         templateUrl: "views/partials/state1.list.html",
