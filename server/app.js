@@ -41,6 +41,8 @@ if (app.get('env') === 'production') {
 
     // changes it to use the optimized version for production
     app.use(express.static(path.join(__dirname, '/dist')));
+    // This covers serving up the index page
+    app.use(express.static(path.join(__dirname, '../dist/app')));
 
     // production error handler
     // no stacktraces leaked to user
