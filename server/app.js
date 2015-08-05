@@ -5,9 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 // uncomment after placing your favicon in /public
@@ -38,11 +35,19 @@ if (app.get('env') === 'development') {
  * Production Settings
  */
 if (app.get('env') === 'production') {
+    // This will change in production since we'll be using the dist folder
+    app.use(express.static(path.join(__dirname, '../client')));
+    // This covers serving up the index page
+    app.use(express.static(path.join(__dirname, '../client/.tmp')));
+    app.use(express.static(path.join(__dirname, '../client/app')));
 
+/*
     // changes it to use the optimized version for production
+    console.log(path.join(__dirname, '/dist'));
     app.use(express.static(path.join(__dirname, '/dist')));
     // This covers serving up the index page
-    app.use(express.static(path.join(__dirname, '../dist/app')));
+    //app.use(express.static(path.join(__dirname, './dist/app')));*/
+    
 
     // production error handler
     // no stacktraces leaked to user
