@@ -160,27 +160,14 @@
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="{{key}}Label">Enter booger new {{key}}</h4>
+						        <h4 class="modal-title" id="{{key}}Label">Enter new {{key}}</h4>
 						      </div>
 						      <div class="modal-body">
 										<div class="form-group">
 										  <label for="inputGroup" class="control-label">Group</label>
-										  <table class="table table-striped">
-										    <thead>
-										      <tr>
-										        <th></th>
-										      </tr>
-										    </head>
-										    <tbody>
-										      <tr ng-repeat="group in selected_groups track by $index">
-										        <td>
-										          <a href="#" ng-click="remove_group(group)"><span class="glyphicon glyphicon-remove"></span></a> {{group}}
-										        </td>
-										      </tr>
-										    </tbody>
-										  </table>
-										  <select id="inputGroup" class="form-control" ng-model="new_fields[key]" ng-options="g as g for g in list_of_groups" ng-change="setGroup(new_fields[key])">
-										  </select>
+										  <div ng-repeat="g in list_of_groups" id="groups_list">
+										  	<input ng-checked="new_fields[key][g]" ng-model="new_fields[key][g]" type="checkbox" id="inputGroup" class="form-control">{{g}}</input>
+										  </div>
 										</div>
 						        <!--<input ng-model="new_fields[key]" type="text" class="form-control"></input>-->
 						      </div>
@@ -201,13 +188,39 @@
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="{{key}}Label">Enter snot new {{key}}</h4>
+						        <h4 class="modal-title" id="{{key}}Label">Enter new {{key}}</h4>
 						      </div>
 						      <div class="modal-body">
 						        <!--<input ng-model="new_fields[key]" type="text" class="form-control"></input>-->
 						        <!--<select ng-model="new_fields[key]">-->
-						        	<input ng-model="new_fields[key]" value="male" type="radio">
-						        	<input ng-model="new_fields[key]" value="female" type="radio">
+						        	<input ng-model="new_fields[key]" value="male" type="radio">&nbsp;&nbsp;male</input><br>
+						        	<input ng-model="new_fields[key]" value="female" type="radio">&nbsp;&nbsp;female</input>
+						        <!--</select>-->
+						      </div>
+						      <div class="modal-footer">
+						        <input style="padding-top:5px;" ng-model="new_fields['confirmation']" type="password" class="form-control" placeholder="Enter password to confirm">
+						        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button href="#" ng-click="changeField(key)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+					<!-- doctor -->
+					<div ng-if="key === 'doctor'">
+						<div class="modal fade" id="{{key}}" tabindex="-1" role="dialog" aria-labelledby="{{key}}Label" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="{{key}}Label">Enter new {{key}}</h4>
+						      </div>
+						      <div class="modal-body">
+		                <label for="inputDoctor" class="control-label">Doctor</label>
+		                <select id="inputDoctor" class="form-control" ng-model="new_fields[key]" ng-options="doc.full_name for doc in list_of_doctors">
+		                  <option value="doctor.doctor_email"></option>
+		                </select>
 						        <!--</select>-->
 						      </div>
 						      <div class="modal-footer">
@@ -256,4 +269,3 @@
 <hr>
 <a id="deleteAccount" style="color:red;" href="#" ng-click="deleteAccount()">delete account</a>
 <hr>
-

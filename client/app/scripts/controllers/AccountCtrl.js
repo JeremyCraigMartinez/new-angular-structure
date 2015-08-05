@@ -13,7 +13,7 @@ angular.module('clientApp')
       $scope.currentUser = { email: LoginService.getEmail() };
 
       if ($scope.userType === "patient") { service = PatientService; }
-      else if ($scope.userType === "doctor" || $scope.userType === "admin") { service = DoctorService; }
+      else if ($scope.userType === "doctor" || $scope.userType === "admin") { service = DoctorService; }      
 
       service.info($scope.currentUser.email).then(function (data) {
       	delete data['__v'];
@@ -27,17 +27,29 @@ angular.module('clientApp')
         delete data['last_name'];
         delete data['email'];
 
-        console.log($scope.first_name);
-
         $scope.account_info = data;
 
         $scope.change_states = {};
+        GroupService.groups().then(function(groups) {
+          $scope.list_of_groups = [];
+          for (var group in groups) {
+            $scope.list_of_groups.push(groups[group]._id);
+          }
+          $scope.new_fields.group = {};
+          for (each in $scope.list_of_groups) {
+            $scope.new_fields.group[$scope.list_of_groups[each]] = ($scope.account_info.group.indexOf($scope.list_of_groups[each])>=0) ? true : false;
+          }          
+        });
+
         for (var each in $scope.account_info) {
-          $scope.change_states[each] = false
+          $scope.change_states[each] = false;
         }
+
         $scope.change_states.first_name = false;
         $scope.change_states.last_name = false;
         $scope.change_states.email = false;
+
+
 
       });
 
@@ -65,12 +77,6 @@ angular.module('clientApp')
         "change__sex",
 			]
 
-      GroupService.groups().then(function(groups) {
-        $scope.list_of_groups = [];
-        for (var group in groups) {
-          $scope.list_of_groups.push(groups[group]._id);
-        }
-      });
       $scope.selected_groups = ($scope.group) ? [$scope.group] : [];
       $scope.remove_group = function (group) {
         $scope.new_fields.group = null;
@@ -100,6 +106,11 @@ angular.module('clientApp')
 
       $scope.new_fields = {};
       $scope.changeField = function (field, groups) {
+        console.log(field);
+        console.log(groups);
+        console.log($scope.new_fields[field]);
+        return;
+        if (field==='doctor') { $scope.new_fields[field] = $scope.new_fields[field].doctor; }
         LoginService.authenticated(LoginService.getEmail(), $scope.new_fields.confirmation).then(function (isAuthenticated) {
           if (!isAuthenticated) { 
             $scope.new_fields = {};
@@ -161,5 +172,25 @@ angular.module('clientApp')
             });
           });          
         }
-      }      
+      };
+
+      // Load doctors for 'change me' options for doctor field
+      DoctorService.doctors().then(function (doctors) {
+        var all = [];
+        $scope.list_of_doctors = [];
+        for (var doctor in doctors) {
+          all.push(DoctorService.info(doctors[doctor]));
+        }
+        $q.all(all).then(function (doctors_info) {
+          for (var doctor in doctors_info) {
+            $scope.list_of_doctors.push({
+              doctor: doctors_info[doctor].email,
+              doctor_email: doctors_info[doctor].email,
+              full_name: doctors_info[doctor].first_name + " " + doctors_info[doctor].last_name
+            })
+          }
+        });
+      });
+
+
   });
