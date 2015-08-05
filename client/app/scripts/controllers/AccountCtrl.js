@@ -155,16 +155,14 @@ angular.module('clientApp')
             LoginService.login(tmpEmail, tmpPass).then(function (err, data) {
 
               tmp[field] = $scope.new_fields[field];
-              $scope.new_fields[field] = null;
               $scope.change_states[field] = false;
-              $scope.new_fields = {};
+              $scope.new_fields.confirmation = "";
             });
           }
           else {
             tmp[field] = $scope.new_fields[field];
-            $scope.new_fields[field] = null;
             $scope.change_states[field] = false;
-            $scope.new_fields = {};
+            $scope.new_fields.confirmation = "";
           }
         });
       };
