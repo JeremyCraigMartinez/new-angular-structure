@@ -102,15 +102,22 @@ angular.module('clientApp')
 
       	// set $scope.change__all back to original value
       	change__all.push(changeMe);
-      }
+      };
 
       $scope.new_fields = {};
       $scope.changeField = function (field, groups) {
-        console.log(field);
-        console.log(groups);
-        console.log($scope.new_fields[field]);
-        return;
-        if (field==='doctor') { $scope.new_fields[field] = $scope.new_fields[field].doctor; }
+        if (field==='doctor') { 
+          $scope.new_fields[field] = $scope.new_fields[field].doctor; 
+        }
+        if (field==='group') { 
+          var tmp = [];
+          for (var each in $scope.new_fields[field]) {
+            if ($scope.new_fields[field][each]) {
+              tmp.push(each);
+            }
+          }
+          $scope.new_fields[field] = tmp; 
+        }
         LoginService.authenticated(LoginService.getEmail(), $scope.new_fields.confirmation).then(function (isAuthenticated) {
           if (!isAuthenticated) { 
             $scope.new_fields = {};
@@ -158,7 +165,7 @@ angular.module('clientApp')
             $scope.new_fields = {};
           }
         });
-      }
+      };
 
       $scope.deleteAccount = function() {
         var ans = confirm("Are you sure you want to delete your account? This action is NOT reversable");
