@@ -4,5 +4,5 @@
 
 angular.module('clientApp')
   .controller('ActivityController',
-    function($scope, $q) {
+    function() {
   });

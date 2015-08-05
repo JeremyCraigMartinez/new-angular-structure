@@ -12,7 +12,8 @@ angular.module('clientApp')
 				deferred.resolve(res.data);
 			});
 			return deferred.promise;
-		}
+		};
+		
 		this.add_group = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -33,11 +34,13 @@ angular.module('clientApp')
 					alert("A request to add this group has been sent");
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.remove_group = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -59,9 +62,10 @@ angular.module('clientApp')
 					alert("A request to delete this group has been sent");
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
 	});

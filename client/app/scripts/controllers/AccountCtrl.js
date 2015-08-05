@@ -4,7 +4,7 @@
 
 angular.module('clientApp')
   .controller('AccountController',
-    function($scope, $q, DoctorService, PatientService, LoginService, $location, GroupService) {
+    function ($scope, $q, DoctorService, PatientService, LoginService, $location, GroupService, $state) {
       var service;
 
       console.log('account');
@@ -16,30 +16,33 @@ angular.module('clientApp')
       else if ($scope.userType === "doctor" || $scope.userType === "admin") { service = DoctorService; }      
 
       service.info($scope.currentUser.email).then(function (data) {
-      	delete data['__v'];
-        delete data['_id'];
+      	delete data.__v;
+        delete data._id;
 
         $scope.first_name = data.first_name;
         $scope.last_name = data.last_name;
         $scope.email = data.email;
 
-        delete data['first_name'];
-        delete data['last_name'];
-        delete data['email'];
+        delete data.first_name;
+        delete data.last_name;
+        delete data.email;
 
         $scope.account_info = data;
 
         $scope.change_states = {};
-        GroupService.groups().then(function(groups) {
-          $scope.list_of_groups = [];
-          for (var group in groups) {
-            $scope.list_of_groups.push(groups[group]._id);
-          }
-          $scope.new_fields.group = {};
-          for (each in $scope.list_of_groups) {
-            $scope.new_fields.group[$scope.list_of_groups[each]] = ($scope.account_info.group.indexOf($scope.list_of_groups[each])>=0) ? true : false;
-          }          
-        });
+
+        if ($scope.userType==="patient") {
+          GroupService.groups().then(function(groups) {
+            $scope.list_of_groups = [];
+            for (var group in groups) {
+              $scope.list_of_groups.push(groups[group]._id);
+            }
+            $scope.new_fields.group = {};
+            for (var each in $scope.list_of_groups) {
+              $scope.new_fields.group[$scope.list_of_groups[each]] = ($scope.account_info.group.indexOf($scope.list_of_groups[each])>=0) ? true : false;
+            }          
+          });
+        }
 
         for (var each in $scope.account_info) {
           $scope.change_states[each] = false;
@@ -63,7 +66,7 @@ angular.module('clientApp')
         height : "height",
         weight : "weight",
         sex : "sex",
-      }
+      };
 
       var change__all = [
 	      "change__first_name",
@@ -75,14 +78,14 @@ angular.module('clientApp')
         "change__height",
         "change__weight",
         "change__sex",
-			]
+			];
 
       $scope.selected_groups = ($scope.group) ? [$scope.group] : [];
       $scope.remove_group = function (group) {
         $scope.new_fields.group = null;
         $scope.list_of_groups.push(group);
         $scope.selected_groups.splice($scope.selected_groups.indexOf(group),1);
-      }
+      };
       $scope.setGroup = function(group){
         console.log(group);
         $scope.list_of_groups.splice($scope.list_of_groups.indexOf(group),1);
@@ -90,7 +93,6 @@ angular.module('clientApp')
       };
 
       $scope.changeState = function (changeMe) {
-      	var old = change__all;
       	$scope.change_states[changeMe] = ($scope.change_states[changeMe]) ? false : true;
 
       	// set all others to false
@@ -139,7 +141,7 @@ angular.module('clientApp')
         else { api_call = "update_info"; }
 
         //POST request to API
-        var packet = {}
+        var packet = {};
         packet[field] = $scope.new_fields[field];
 
         // because this line: LoginService.login($scope.new_fields.email || LoginService.getEmail() is send undefined for email
@@ -194,7 +196,7 @@ angular.module('clientApp')
               doctor: doctors_info[doctor].email,
               doctor_email: doctors_info[doctor].email,
               full_name: doctors_info[doctor].first_name + " " + doctors_info[doctor].last_name
-            })
+            });
           }
         });
       });

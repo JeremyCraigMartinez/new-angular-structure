@@ -33,9 +33,9 @@ angular.module('clientApp')
 				$scope.dashboard = function () {
 					console.log($scope.userType);
 					console.log(typeof $scope.userType);
-					if ($scope.userType === 'doctor') { $state.go('doctors_home') }
-					else if ($scope.userType === 'admin') { $state.go('app') }
-					else if ($scope.userType === 'patient') { $state.go('patients_home') }
+					if ($scope.userType === 'doctor') { $state.go('doctors_home'); }
+					else if ($scope.userType === 'admin') { $state.go('app'); }
+					else if ($scope.userType === 'patient') { $state.go('patients_home'); }
 				};
 			}
 		};

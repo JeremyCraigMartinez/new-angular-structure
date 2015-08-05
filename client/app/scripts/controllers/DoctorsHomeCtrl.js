@@ -4,17 +4,17 @@
 
 angular.module('clientApp')
   .controller('DoctorsHomeController',
-    function ($scope, PatientService, $state, $rootScope) {
+    function ($scope, PatientService, $state, $rootScope, $q) {
       $scope.Math = window.Math;
       PatientService.patients().then(function(patients) {
         $scope.patients = [];
+        var all = [];
         for (var patient in patients) {
-          PatientService.patient_info(patients[patient]).then(function (info) {
-            if (info) {
-              $scope.patients.push(info);
-            }
-          });
+          all.push(PatientService.patient_info(patients[patient]));
         }
+        $q.all(all).then(function (info) {
+          $scope.patients = info;
+        });
       });
 
       $scope.predicate = 'last_name';

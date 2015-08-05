@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-	.service('PatientService', function ($http, $q, LoginService, $rootScope, $cookieStore, $state) {
+	.service('PatientService', function ($http, $q) {
 		this.patients = function() {
 			var deferred = $q.defer();
 			$http({
@@ -12,7 +12,8 @@ angular.module('clientApp')
 				deferred.resolve(res.data);
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.info = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -27,11 +28,13 @@ angular.module('clientApp')
 					console.log('patients: '+id+' has no info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.patient_info = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -46,11 +49,13 @@ angular.module('clientApp')
 					console.log('patients: '+id+' has no info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.update_info = function(new_info) {
 			var deferred = $q.defer();
 			$http({
@@ -64,14 +69,16 @@ angular.module('clientApp')
 			})
 			.catch(function(error) {
 				if (error.status === 404) {
-					console.log('could not update info of: '+id);
+					console.log('could not update info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.update_account = function(new_info) {
 			var deferred = $q.defer();
 			console.log(new_info);
@@ -86,14 +93,16 @@ angular.module('clientApp')
 			})
 			.catch(function(error) {
 				if (error.status === 404) {
-					console.log('could not update info of: '+id);
+					console.log('could not update account info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+		
 		this.remove = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -108,9 +117,10 @@ angular.module('clientApp')
 					console.log('unable to remove patient: '+id);
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
 	});

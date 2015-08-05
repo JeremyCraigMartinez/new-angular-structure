@@ -16,11 +16,13 @@ angular.module('clientApp')
 					console.log('doctors: '+id+' has no info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+ 
 		this.add_doctor = function(info) {
 			var deferred = $q.defer();
 
@@ -40,7 +42,8 @@ angular.module('clientApp')
 				deferred.resolve(error, null);
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.info = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -55,11 +58,13 @@ angular.module('clientApp')
 					console.log('doctors: '+id+' has no info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.update_info = function(new_info) {
 			var deferred = $q.defer();
 			$http({
@@ -73,14 +78,16 @@ angular.module('clientApp')
 			})
 			.catch(function(error) {
 				if (error.status === 404) {
-					console.log('could not update info of: '+id);
+					console.log('could not update info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.update_account = function(new_info) {
 			var deferred = $q.defer();
 			console.log(new_info);
@@ -92,19 +99,19 @@ angular.module('clientApp')
 			})
 			.then(function(res) {
 				deferred.resolve(res.data);
-				var success = LoginService.setToken(new_info.email || null, new_info.password || null);
-				if (success) { $state.go('login'); }
 			})
 			.catch(function(error) {
 				if (error.status === 404) {
-					console.log('could not update info of: '+id);
+					console.log('could not update account info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}		
+		};
+
 		this.remove = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -119,9 +126,11 @@ angular.module('clientApp')
 					console.log('unable to remove doctor: '+id);
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
+
 	});

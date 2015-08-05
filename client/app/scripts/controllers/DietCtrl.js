@@ -4,5 +4,5 @@
 
 angular.module('clientApp')
   .controller('DietController',
-    function($scope, $q) {
+    function() {
   });

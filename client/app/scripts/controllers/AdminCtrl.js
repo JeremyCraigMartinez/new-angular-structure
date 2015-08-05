@@ -3,6 +3,6 @@
 'use strict';
 
 angular.module('clientApp')
-  .controller('PatientsHomeController',
+  .controller('AdminController',
     function () {
     });

@@ -18,7 +18,8 @@ angular.module('clientApp')
 				deferred.resolve(error, null);
 			});
 			return deferred.promise;
-		}
+		};
+
 		this.patient_info = function(id) {
 			var deferred = $q.defer();
 			$http({
@@ -33,9 +34,10 @@ angular.module('clientApp')
 					console.log('patients: '+id+' has no info');
 					deferred.reject(error);
 				}
-				else 
+				else {
 					console.log(error);
+				}
 			});
 			return deferred.promise;
-		}
+		};
 	});

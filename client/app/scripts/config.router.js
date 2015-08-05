@@ -40,6 +40,11 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/groups.html',
         controller: 'GroupController'
     })
+    .state('admin', {
+        url: "/admin",
+        templateUrl: 'views/admin.html',
+        controller: 'AdminController'
+    })
     .state('patient_profile', {
         url: "/patient_profile/:id",
         templateUrl: 'views/patient_profile.html',

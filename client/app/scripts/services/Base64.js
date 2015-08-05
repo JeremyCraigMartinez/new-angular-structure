@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-	.service('Base64', function($http, $q) {
+	.service('Base64', function() {
 	/* jshint ignore:start */
   
   var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';

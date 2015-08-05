@@ -7,7 +7,6 @@ angular.module('clientApp')
 			var service = this;
 
 			var email = null;
-			var password = null;
 			var type = null;
 
 			this.login = function(email, password) {
@@ -54,7 +53,7 @@ angular.module('clientApp')
 				email = newEmail;
 				console.log(newType);
 
-				if (newType != null) {
+				if (newType !== null) {
 					//var expireDate = new Date();
 					//expireDate.setSeconds(expireDate.getSeconds()+5);
 					$cookies.put("type",newType/*,{'expires':expireDate}*/);
@@ -67,8 +66,8 @@ angular.module('clientApp')
 							username: newEmail,
 							authdata: authdata
 						}
-					}
-					$http.defaults.headers.common['Authorization'] = 'Basic '+authdata;
+					};
+					$http.defaults.headers.common.Authorization = 'Basic '+authdata;
 
 					$rootScope.$broadcast("currentUser:set", {type:$cookies.get('type'),email:$cookies.get('email')});
 					return true;					
@@ -80,7 +79,7 @@ angular.module('clientApp')
 
 					$rootScope.$broadcast("currentUser:unset");
 
-					$http.defaults.headers.common['Authorization'] = 'Basic '+null;
+					$http.defaults.headers.common.Authorization = 'Basic '+null;
 					return false;
 				}
 				
