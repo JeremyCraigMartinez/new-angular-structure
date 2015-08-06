@@ -1,12 +1,17 @@
+<!--
 <h1>Patient Dashboard!</h1>
 <hr/>
-<div style="height: 800px;">
-   <div id="top_div"></div>
-   <div id="center1_div"></div>
-   <div id="right1_div"></div>
-   <div id="middle_div"></div>
-   <div id="top2_div"></div>
-   <div id="center2_div"></div>
-   <div id="right2_div"></div>
+<div style="height: 1000px;">
+   <div id="div1" data-ng-include=" 'views/partials/patients_home.topleft.html' "></div>
+   <div id="div2"></div>
+   <div id="div3" data-ng-include=" 'views/partials/patients_home.topright.html' "></div>
+   <div id="div4"></div>
+   <div id="div5" data-ng-include=" 'views/partials/patients_home.bottomleft.html' "></div>
+   <div id="div6"></div>
+   <div id="div7" data-ng-include=" 'views/partials/patients_home.bottomright.html' "></div>
 </div>
 <hr>
+-->
+
+        <pre class="prettyprint linenums">
+<div ui-calendar="uiConfig"></div>
