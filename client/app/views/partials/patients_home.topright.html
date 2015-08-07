@@ -1,0 +1,47 @@
+<div class="arrow arrow-southwest"></div>
+<h1>Statistics</h1>
+<hr>
+<p>content goes here</p>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#div3').mouseover(function () {
+      $('.arrow-southwest').show();
+    });
+    $('#div3').mouseout(function () {
+      $('.arrow-southwest').hide();
+    });
+  });
+
+  var expanded = false;
+  $(".arrow-southwest").click(function () {
+    expanded = !expanded;
+    if (expanded) {
+      $("#div1").hide();
+      $("#div2").hide();
+      $("#div4").hide();
+      $("#div5").hide();
+      $("#div6").hide();
+      $("#div7").hide();
+      $("#div3")
+      .animate({
+        height: '100%',
+        width:'100%'
+      }, 1000);
+    }
+    else {
+      $('arrow-southwest').css({transform: 'rotate(135deg)'})
+      $("#div3")
+      .animate({
+        height: '48%',
+        width:'48%'
+      }, 1000);      
+      $("#div1").show();
+      $("#div2").show();
+      $("#div4").show();
+      $("#div5").show();
+      $("#div6").show();
+      $("#div7").show();
+    }
+  });  
+</script>

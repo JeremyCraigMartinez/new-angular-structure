@@ -4,5 +4,6 @@
 
 angular.module('clientApp')
   .controller('PatientsHomeController',
-    function () {
+    function ($scope) {
+
     });

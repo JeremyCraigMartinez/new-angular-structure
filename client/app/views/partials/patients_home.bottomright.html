@@ -1,0 +1,49 @@
+<div class="arrow arrow-northwest"></div>
+<div ng-controller="PatientsHomeGraphsController">
+	<h1>Graphs</h1>
+	<hr>
+	<div id="line-example"></div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#div7').mouseover(function () {
+      $('.arrow-northwest').show();
+    });
+    $('#div7').mouseout(function () {
+      $('.arrow-northwest').hide();
+    });
+  });
+
+  /*var expanded = false;
+  $(".arrow-northwest").click(function () {
+    expanded = !expanded;
+    if (expanded) {
+      $("#div1").hide();
+      $("#div2").hide();
+      $("#div3").hide();
+      $("#div4").hide();
+      $("#div5").hide();
+      $("#div6").hide();
+      $("#div7")
+      .animate({
+        height: '100%',
+        width:'100%'
+      }, 1000);
+      $("#line-example").css({width:'100%',height:'100%'})
+    }
+    else {
+      $("#div7")
+      .animate({
+        height: '48%',
+        width:'48%'
+      }, 1000);      
+      $("#div1").show();
+      $("#div2").show();
+      $("#div3").show();
+      $("#div4").show();
+      $("#div5").show();
+      $("#div6").show();
+    }
+  });*/
+</script>
