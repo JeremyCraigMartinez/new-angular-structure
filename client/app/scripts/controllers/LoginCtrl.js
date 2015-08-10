@@ -52,12 +52,12 @@ angular.module('clientApp')
 					for (var each in $scope.signup) {
 						member_info[each] = $scope.signup[each];
 					}
-					member_info.email = $scope.login.email;
-					member_info.password = $scope.login.password;
+					member_info.email = $scope.signup.email;
+					member_info.password = $scope.signup.pass;
 					$scope.submitSignup(member_info);
 				}
 				else {
-					$scope.submitLogin($scope.login);
+					$scope.submitLogin($scope.signup);
 				}
 			};
 
@@ -73,7 +73,7 @@ angular.module('clientApp')
 							}
 							else {
 								$scope.user = user;
-								$state.go('patient_home');
+								$state.go('app');
 							}
 						});
 					});
@@ -91,7 +91,7 @@ angular.module('clientApp')
 							}
 							else {
 								$scope.user = user;
-								$state.go('patients');
+								$state.go('app');
 							}
 						});
 					});
@@ -99,7 +99,7 @@ angular.module('clientApp')
 			};
 
 			$scope.submitLogin = function() {
-				LoginService.login($scope.login.email, $scope.login.password).then(function (err, user) {
+				LoginService.login($scope.signup.email, $scope.signup.pass).then(function (err, user) {
 					if (err) {
 						$scope.failedLogin=true;
 						$state.go('login');
@@ -107,7 +107,7 @@ angular.module('clientApp')
 					else {
 						var type = LoginService.getType();
 						console.log(type);
-						if (type === "doctor") { $state.go('doctors_home'); }
+						if (type === "doctor") { $state.go('app'); }
 						else if (type === "admin") { $state.go('app'); }
 						else if (type === "patient") { $state.go('app'); }
 					}

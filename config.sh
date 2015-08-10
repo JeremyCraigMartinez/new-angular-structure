@@ -11,7 +11,7 @@ nvm install 0.12.7
 
 nvm use 0.12.7
 
-sudo apt-get install gith
+sudo apt-get install git
 ssh-keygen -t rsa -b 4096 -C "jeremymartinez11@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
@@ -30,6 +30,8 @@ npm install
 sudo npm install -g bower
 sudo npm install -g nodemon
 sudo npm install -g grunt-cli
+sudo npm install -g yo
+sudo npm install -g generator-angular
 
 bower install
 
@@ -50,8 +52,17 @@ touch bin/www
 
 #paste www ingredients in
 
+#to test
 cd ../client
+grunt serve
+
+#if memory error, follow instructions here:
+# https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
+
 grunt --force
 
 cd ../server
 npm start
+
+#post git pull hook
+# grep -ril 'dev.api.wsuhealth.wsu.edu' | xargs sed -i 's/dev.api.wsuhealth.wsu.edu/104.236.169.12/g'
