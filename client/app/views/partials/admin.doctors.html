@@ -17,13 +17,6 @@
                 </a>
                 <span class="sortorder" ng-show="predicate==='email'" ng-class="{reverse:reverse}"></span>
               </th>
-              <th ng-hide>
-                <a href="" style="color:red;"
-                  ng-click="order('group')">
-                  Group
-                </a>
-                <span class="sortorder" ng-show="predicate==='group'" ng-class="{reverse:reverse}"></span>
-              </th>
               <th>
                 <a href="" style="color:red;"
                   ng-click="order('first_name')">
@@ -56,27 +49,12 @@
           </thead>
           <tbody>
 
-          <tr ng-repeat="patient in patients | orderBy:predicate:reverse" ng-show="firstContainsSecond(patient,search)">
-            <td><a href="#" ng-click="patient_profile(patient.email)">{{patient.email}}</a></td>
-            <td><p ng-repeat="each_group in patient.group">{{each_group}}</p></td>
-            <td><a href="#" ng-click="patient_profile(patient.email)">{{patient.first_name}}</a></td>
-            <td><a href="#" ng-click="patient_profile(patient.email)">{{patient.last_name}}</a></td>
-            <td>{{patient.sex}}</td>
-            <td>{{patient.age}}</td>
-            <td>{{patient.height}}</td>
-            <td>{{patient.weight}}</td>
-
-            <td 
-              ng-init="bmi=Math.round((patient.weight/(patient.height*patient.height))*703)">
-              {{bmi}}
-            </td>
-
-            <!-- http://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm -->
-            <td ng-if="bmi < 18.5">Underweight</td>
-            <td ng-if="18.5 <= bmi && bmi <= 24.9">Normal Weight</td>
-            <td ng-if="25.0 <= bmi && bmi <= 29.9">Overweight</td>
-            <td ng-if="30.0 <= bmi">Obese</td>
-
+          <tr ng-repeat="doctor in doctors | orderBy:predicate:reverse" ng-show="firstContainsSecond(doctor,search)">
+            <td><a href="#" ng-click="doctor_profile(doctor.email)">{{doctor.email}}</a></td>
+            <td><a href="#" ng-click="doctor_profile(doctor.email)">{{doctor.first_name}}</a></td>
+            <td><a href="#" ng-click="doctor_profile(doctor.email)">{{doctor.last_name}}</a></td>
+            <td>{{doctor.hospital}}</td>
+            <td>{{doctor.specialty}}</td>
 
           </tr>
           </tbody>

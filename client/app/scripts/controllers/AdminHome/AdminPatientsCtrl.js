@@ -4,9 +4,9 @@
 
 angular.module('clientApp')
   .controller('AdminPatientsController',
-    function ($scope, PatientService, $state, $rootScope, $q) {
+    function ($scope, AdminService, PatientService, $state, $rootScope, $q) {
       $scope.Math = window.Math;
-      PatientService.patients().then(function(patients) {
+      AdminService.patients().then(function(patients) {
         $scope.patients = [];
         var all = [];
         for (var patient in patients) {
