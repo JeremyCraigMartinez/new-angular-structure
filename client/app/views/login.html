@@ -137,7 +137,8 @@
             <hr>
 
           <div class="form-group">
-            <button style="width:250px;" class="btn btn-primary btn-block" type="submit">Sign in</button>
+            <button ng-if="!new_member" style="width:250px;" class="btn btn-primary btn-block" type="submit">Sign in</button>
+            <button ng-if="new_member" style="width:250px;" class="btn btn-primary btn-block" type="submit">Sign up</button>
           </div>
         </form><!-- /Form: Sign in -->
 

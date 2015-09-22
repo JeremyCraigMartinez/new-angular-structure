@@ -1,0 +1,6 @@
+li:hover {
+  background-color: #e8e8e8;
+}
+li:focus {
+  background-color: orange;
+}

@@ -1,10 +1,10 @@
 <!-- public/templates/user_panel.html -->
-<div ng-if="currentUser" style="color:#909090;">
+<div ng-if="currentUser.email!=null" style="color:#909090;">
   Logged in as <a ui-sref="account">{{currentUser.email}}</a>
   (<a href="#" ng-click="logout()">Log out</a>)
 </div>
 
-<div ng-if="!currentUser">
+<div ng-if="currentUser.email==null">
   <a ui-sref="login">Log in</a>
 </div>
 

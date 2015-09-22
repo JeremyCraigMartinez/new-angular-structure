@@ -4,29 +4,29 @@
 
     <div id="navbar" class="">
       <ul class="nav navbar-nav">
-        <li><img class="main-logo" src="images/ireach.PNG" alt="ireach logo" style="width:146px;"></li>
-        <li><a ui-sref="app">Home</a></li>
-        <li><a class="navbar-brand" ng-if="userType==='doctor' || userType==='patient'" href="#" ng-click="dashboard()">Dashboard</a></li>
-        <li><a class="navbar-brand" ng-if="userType==='doctor' || userType==='admin'" href="#" ui-sref="groups">Groups</a></li>            
-        <li><a class="navbar-brand" ng-if="userType==='admin'" ui-sref="admin">Admin</a></li>
+        <li class="navbar-li"><img class="main-logo" src="images/ireach.PNG" alt="ireach logo" style="width:146px;"></li>
+        <li class="navbar-li"><a ui-sref="app">Home</a></li>
+        <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='doctor' || userType==='patient'" href="#" ng-click="dashboard()">Dashboard</a></li>
+        <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='doctor' || userType==='admin'" href="#" ui-sref="groups">Groups</a></li>            
+        <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='admin'" ui-sref="admin">Admin</a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li class="navbar-li"><a href="#">Action</a></li>
+            <li class="navbar-li"><a href="#">Another action</a></li>
+            <li class="navbar-li"><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <li class="navbar-li"><a href="#">Separated link</a></li>
+            <li class="navbar-li"><a href="#">One more separated link</a></li>
           </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav pull-right">
-        <li><a ui-sref="about">About</a></li>
-        <li><a ui-sref="contact">Contact</a></li>
-        <li><div user-panel style="padding-top: 10px; padding-left: 20px;"></div></li>
+        <li class="navbar-li"><a ui-sref="about">About</a></li>
+        <li class="navbar-li"><a ui-sref="contact">Contact</a></li>
+        <li class="navbar-li"><div user-panel style="padding-top: 10px; padding-left: 20px;"></div></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->

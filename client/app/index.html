@@ -10,26 +10,37 @@
     <link rel="stylesheet" href="bower_components/lemonade/css/lemonade.min.css" />
     <link rel="stylesheet" href="bower_components/morris.js/morris.css" />
     <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    
     <link href="styles/homepage.css" rel="stylesheet" type="text/css">
     <link href="styles/diet.css" rel="stylesheet" type="text/css">
     <link href="styles/patient_home.css" rel="stylesheet" type="text/css">
     <link href="styles/calendar.css" rel="stylesheet" type="text/css">
     <link href="styles/timeline.css" rel="stylesheet" type="text/css">
+    <link href="styles/navbar.css" rel="stylesheet" type="text/css">
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
 <body ng-app="clientApp">
+  <style>
+
+  </style>
   <div class="well">
     <div class="navbar" data-ng-include=" 'views/partials/navbar.html' "></div>
   </div>
 
-  <div class="main-app" style="padding-left:100px; padding-right:100px;">
+  <div class="main-app">
     <div ui-view></div>
   </div>
+
+  <footer>
+    <span></span>
+  </footer>
      
 
   <!-- build:js(.) scripts/vendor.js -->
@@ -66,7 +77,6 @@
   <!-- endbuild -->
 
   <script src="scripts/app.js"></script>
-  <script src="scripts/config.lazyload.js"></script>
   <script src="scripts/config.router.js"></script>
   <script src="scripts/run.js"></script>
 
@@ -77,12 +87,15 @@
   <script src="scripts/controllers/PatientsHomeCtrl.js"></script>
   <script src="scripts/controllers/GroupCtrl.js"></script>
   <script src="scripts/controllers/PatientProfileCtrl.js"></script>
-  <script src="scripts/controllers/DietCtrl.js"></script>
-  <script src="scripts/controllers/ActivityCtrl.js"></script>
   <script src="scripts/controllers/AccountCtrl.js"></script>
   <script src="scripts/controllers/AdminCtrl.js"></script>
   <script src="scripts/controllers/PatientsHome/Graphs.js"></script>
   <script src="scripts/controllers/PatientsHome/DietAndFood.js"></script>
+  <script src="scripts/controllers/AdminHome/AdminPatientsCtrl.js"></script>
+  <script src="scripts/controllers/AdminHome/AdminDoctorsCtrl.js"></script>
+
+  <script src="scripts/controllers/PatientProfile/PatientProfile-DietCtrl.js"></script>
+  <script src="scripts/controllers/PatientProfile/PatientProfile-ActivityCtrl.js"></script>
 
   <!-- Directives -->
   <script src="scripts/directives/navbar.js"></script>
