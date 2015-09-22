@@ -45,6 +45,16 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/admin.html',
         controller: 'AdminController'
     })
+    .state('admin.doctors', {
+        url: "/admin/doctors",
+        templateUrl: 'views/partials/admin.doctors.html',
+        controller: 'AdminDoctorsController'
+    })
+    .state('admin.patients', {
+        url: "/admin/patients",
+        templateUrl: 'views/partials/admin.patients.html',
+        controller: 'AdminPatientsController'
+    })
     .state('patient_profile', {
         url: "/patient_profile/:id",
         templateUrl: 'views/patient_profile.html',
@@ -53,12 +63,12 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
     .state('patient_profile.diet', {
         url: "/patient_profile/:id/diet",
         templateUrl: 'views/partials/patient_profile.diet.html',
-        controller: 'DietController'
+        controller: 'PatientProfile_DietController'
     })
     .state('patient_profile.activity', {
         url: "/patient_profile/:id/activity",
         templateUrl: 'views/partials/patient_profile.activity.html',
-        controller: 'ActivityController'
+        controller: 'PatientProfile_ActivityController'
     })
     .state('account', {
         url: "/account",

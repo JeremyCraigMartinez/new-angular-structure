@@ -7,8 +7,8 @@ angular.module('clientApp')
 		return {
 			templateUrl: '/views/partials/user_panel.html',
 			controller: function($scope, LoginService, $http, $cookies, $state) {
-				var email = $cookies.get('email');
-				var type = $cookies.get('type');
+				var email = ($cookies.get('email')==='null') ? null : $cookies.get('email');
+				var type = ($cookies.get('type')==='null') ? null : $cookies.get('type');
 				$scope.currentUser = (email) ? {email:email} : null;
 				$scope.userType = (type) ? type : null;
 
@@ -24,6 +24,8 @@ angular.module('clientApp')
 
 				$scope.logout = function () {
 					LoginService.logout().then(function() {
+						$scope.currentUser.email = null;
+						console.log($scope.currentUser.email);
 						$scope.currentUser = null;
 						$scope.userType = null;
 						$state.go('app');
@@ -37,6 +39,7 @@ angular.module('clientApp')
 					else if ($scope.userType === 'admin') { $state.go('app'); }
 					else if ($scope.userType === 'patient') { $state.go('patients_home'); }
 				};
+				console.log($scope.currentUser);
 			}
 		};
 	});
