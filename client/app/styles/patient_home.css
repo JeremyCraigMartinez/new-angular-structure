@@ -56,6 +56,9 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cff0fb', endColorstr='#74d8f6',GradientType=0 ); /* IE6-9 */
   text-align:center;
   float: left;
+
+  overflow-y: auto;
+  overflow-x: hidden;  
 }
 #div6 {
   height:2%;
