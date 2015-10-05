@@ -2,7 +2,7 @@ For more information, see client/README.md
 
 ##User Stories for web app
 
-| As a <type of user>		| I was <some goal>                                 | so that <some reason>                                                                 |
+| As a <type of user>		| I want <some goal>                                | so that <some reason>                                                                 |
 |---------------------------|---------------------------------------------------|---------------------------------------------------------------------------------------|
 | Client					| visit the about page								| I can learn about the iREACH project													|
 | Client					| visit the contact us page							| I can contact the iREACH company														|
