@@ -1,0 +1,20 @@
+<!-- Welcome title and description -->
+  <h1 style="padding-top:90px; padding-left:20px;">Profile of {{first_name}} {{last_name}}</h1>
+  <hr>
+
+  <div class="frame">
+    <div class="bit-3 col-md-4 col-sm-4 col-lg-4">
+    	<img src="http://blogdailyherald.com/wp-content/uploads/2014/10/wallpaper-for-facebook-profile-photo-1024x645.jpg">
+    </div>
+    <div class="bit-2">
+			<table class="table table-striped">
+				<thead>
+					<th>field</th>
+					<th>data</th>
+				</thead>
+				<tr ng-repeat="(key,info) in doctor_info">
+					<td>{{key}}</td><td>{{info}}</td>
+				</tr>
+			</table>
+		</div>
+  </div><!-- /row -->
