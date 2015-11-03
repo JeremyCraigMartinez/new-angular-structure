@@ -61,16 +61,18 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/patient_profile.html',
         controller: 'PatientProfileController'
     })
-    /*.state('patient_profile.diet', {
+    ////////////
+    .state('patient_profile.diet', {
         url: "/patient_profile/:id/diet",
-        templateUrl: 'views/partials/patient_profile.diet.html',
-        controller: 'PatientProfile_DietController'
-    })*/
+        templateUrl: 'views/partials/patients_home.diets.html',
+        controller: 'DietAndFoodController'
+    })
     .state('patient_profile.activity', {
         url: "/patient_profile/:id/activity",
-        templateUrl: 'views/partials/patient_profile.activity.html',
+        templateUrl: 'views/partials/patients_home.activity.html',
         controller: 'ActivityController'
     })
+    /////////////
     .state('account', {
         url: "/account",
         templateUrl: 'views/account.html',

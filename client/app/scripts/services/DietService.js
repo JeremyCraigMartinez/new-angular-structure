@@ -149,4 +149,47 @@ angular.module('clientApp')
 			return deferred.promise;
 		};
 
+		// diet calls for doctors to use
+		this.get_diets_fromAdmin = function (patient_email) {
+			var deferred = $q.defer();
+			$http({
+				method: "GET",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/diet/admin/"+patient_email,
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('could not get diets for: '+currentUser);
+					deferred.reject(error);
+				}
+				else {
+					console.log(error);
+				}
+			});
+			return deferred.promise;
+		};
+
+		this.get_diet_fromAdmin = function (timestamp, patient_email) {
+			var deferred = $q.defer();
+			$http({
+				method: "GET",
+				url: "https://dev.api.wsuhealth.wsu.edu:5025/diet/admin/"+patient_email+"/"+timestamp,
+			})
+			.then(function(res) {
+				deferred.resolve(res.data);
+			})
+			.catch(function(error) {
+				if (error.status === 404) {
+					console.log('could not get diets for: '+currentUser);
+					deferred.reject(error);
+				}
+				else {
+					console.log(error);
+				}
+			});
+			return deferred.promise;
+		};
+
 });
