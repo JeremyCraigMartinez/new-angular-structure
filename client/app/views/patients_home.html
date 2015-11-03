@@ -1,12 +1,8 @@
 <h1>Patient Dashboard!</h1>
 <hr/>
 <div class="page-wrap" style="height: 1000px;">
-   <div class="corner-div" id="div1" data-ng-include=" 'views/partials/patients_home.topleft.html' "></div>
-   <div class="corner-div" id="div2"></div>
-   <div class="corner-div" id="div3" data-ng-include=" 'views/partials/patients_home.topright.html' "></div>
-   <div class="corner-div" id="div4"></div>
-   <div class="corner-div" id="div5" data-ng-include=" 'views/partials/patients_home.bottomleft.html' "></div>
-   <div class="corner-div" id="div6"></div>
-   <div class="corner-div" id="div7" data-ng-include=" 'views/partials/patients_home.bottomright.html' "></div>
+   <div id="diet" data-ng-include=" 'views/partials/patients_home.diets.html' "></div>
+   <div class="dashboard-divider"></div>
+   <div id="activity" data-ng-include=" 'views/partials/patients_home.activity.html' "></div>
 </div>
 <hr>

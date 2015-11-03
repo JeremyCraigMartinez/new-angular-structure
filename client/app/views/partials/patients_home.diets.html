@@ -1,0 +1,14 @@
+<div class="arrow arrow-northeast"></div>
+<div ng-controller="DietAndFoodController">
+
+
+  <h1>Diet</h1>
+  <hr>
+  <ul ng-repeat="diet in diets">
+    <li>{{diet.food}}
+      <ul>
+        <li>You consumed: {{diet.calories}} calories</li>
+        <li>@ {{diet.created}}</li>
+      </ul>
+    </li>
+  </ul>

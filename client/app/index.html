@@ -18,7 +18,6 @@
     <link href="styles/diet.css" rel="stylesheet" type="text/css">
     <link href="styles/patient_home.css" rel="stylesheet" type="text/css">
     <link href="styles/calendar.css" rel="stylesheet" type="text/css">
-    <link href="styles/timeline.css" rel="stylesheet" type="text/css">
     <link href="styles/navbar.css" rel="stylesheet" type="text/css">
     <link href="styles/main.css" rel="stylesheet" type="text/css">
 
@@ -37,10 +36,6 @@
   <div class="main-app">
     <div ui-view></div>
   </div>
-
-  <footer>
-    <span></span>
-  </footer>
      
 
   <!-- build:js(.) scripts/vendor.js -->
@@ -92,6 +87,7 @@
   <script src="scripts/controllers/AdminCtrl.js"></script>
   <script src="scripts/controllers/PatientsHome/Graphs.js"></script>
   <script src="scripts/controllers/PatientsHome/DietAndFood.js"></script>
+  <script src="scripts/controllers/PatientsHome/ActivityCtrl.js"></script>
   <script src="scripts/controllers/AdminHome/AdminPatientsCtrl.js"></script>
   <script src="scripts/controllers/AdminHome/AdminDoctorsCtrl.js"></script>
   <script src="scripts/controllers/PatientProfile/PatientProfile-DietCtrl.js"></script>
@@ -109,6 +105,7 @@
   <script src="scripts/services/GroupService.js"></script>
   <script src="scripts/services/DoctorService.js"></script>
   <script src="scripts/services/DietService.js"></script>
+  <script src="scripts/services/ActivityService.js"></script>
   <script src="scripts/services/AdminService.js"></script>
 
   <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>

@@ -1,0 +1,15 @@
+<div class="arrow arrow-northeast"></div>
+<div ng-controller="ActivityController">
+
+
+  <h1>Activity</h1>
+  <hr>
+  <ul ng-repeat="act in activity">
+    <li>{{act.activity}}
+      <ul>
+        <li>You burned: {{act.calories_burned}} calories</li>
+        <li>Workout time: {{act.duration}}</li>
+        <li>@ {{act.created}}</li>
+      </ul>
+    </li>
+  </ul>

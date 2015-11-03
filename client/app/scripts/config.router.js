@@ -17,10 +17,6 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/login.html',
         controller: 'LoginController'
     })
-    .state('about', {
-        url: "/about",
-        templateUrl: 'views/about.html'
-    })
     .state('contact', {
         url: "/contact",
         templateUrl: 'views/contact.html'
@@ -65,11 +61,6 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/patient_profile.html',
         controller: 'PatientProfileController'
     })
-    .state('patient_profile.diet', {
-        url: "/patient_profile/:id/diet",
-        templateUrl: 'views/partials/patients_home.bottomleft.html',
-        controller: 'DietAndFoodController'
-    })
     /*.state('patient_profile.diet', {
         url: "/patient_profile/:id/diet",
         templateUrl: 'views/partials/patient_profile.diet.html',
@@ -78,29 +69,11 @@ clientApp.config(function($stateProvider, $urlRouterProvider){
     .state('patient_profile.activity', {
         url: "/patient_profile/:id/activity",
         templateUrl: 'views/partials/patient_profile.activity.html',
-        controller: 'PatientProfile_ActivityController'
+        controller: 'ActivityController'
     })
     .state('account', {
         url: "/account",
         templateUrl: 'views/account.html',
         controller: 'AccountController'
     })
-    .state('state1.list', {
-        url: "/list",
-        templateUrl: "views/partials/state1.list.html",
-        controller: function($scope){
-          $scope.items = ["A", "List", "Of", "Items"];
-        }
-    })
-    .state('state2', {
-        url: "/state2",
-        templateUrl: "views/partials/state2.html"
-    })
-    .state('state2.list', {
-        url: "/list",
-        templateUrl: "views/partials/state2.list.html",
-        controller: function($scope){
-          $scope.things = ["A", "Set", "Of", "Things"];
-        }
-    });
 });
