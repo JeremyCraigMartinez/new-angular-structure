@@ -1,0 +1,14 @@
+<div class="arrow arrow-northeast"></div>
+<div ng-controller="RawActivityController">
+
+
+  <h1>Raw Activity</h1>
+  <hr>
+  <ul ng-repeat="act in activity">
+    <li>{{act.created}}
+      <ul>
+        <li>Raw Data: {{act.data}} calories</li>
+        <li>Is processed: {{act.processed}}</li>
+      </ul>
+    </li>
+  </ul>

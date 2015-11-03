@@ -39,6 +39,24 @@
   overflow-y: auto;
   overflow-x: hidden;  
 }
+#raw-activity {
+  height:48%;
+  width:100%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ddffc3+0,b5ff81+50,ddffc3+100 */
+  background: #ddffc3; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ddffc3 0%, #b5ff81 50%, #ddffc3 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ddffc3), color-stop(50%,#b5ff81), color-stop(100%,#ddffc3)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ddffc3 0%,#b5ff81 50%,#ddffc3 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ddffc3 0%,#b5ff81 50%,#ddffc3 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ddffc3 0%,#b5ff81 50%,#ddffc3 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ddffc3 0%,#b5ff81 50%,#ddffc3 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddffc3', endColorstr='#ddffc3',GradientType=0 ); /* IE6-9 */
+  text-align:center;
+  float: left; 
+
+  overflow-y: auto;
+  overflow-x: hidden;  
+}
 
 div.page-wrap   { 
   width: 100%; 
