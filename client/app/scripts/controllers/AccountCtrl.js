@@ -7,8 +7,6 @@ angular.module('clientApp')
     function ($scope, $q, DoctorService, PatientService, LoginService, $location, GroupService, $state) {
       var service;
 
-      console.log('account');
-
       $scope.userType = LoginService.getType();
       $scope.currentUser = { email: LoginService.getEmail() };
 
@@ -87,7 +85,6 @@ angular.module('clientApp')
         $scope.selected_groups.splice($scope.selected_groups.indexOf(group),1);
       };
       $scope.setGroup = function(group){
-        console.log(group);
         $scope.list_of_groups.splice($scope.list_of_groups.indexOf(group),1);
         $scope.selected_groups.push(group);
       };

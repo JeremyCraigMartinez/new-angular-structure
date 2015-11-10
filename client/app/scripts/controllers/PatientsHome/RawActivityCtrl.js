@@ -14,7 +14,6 @@ angular.module('clientApp')
 		if (userType === 'patient') {
 	    RawActivityService.get_all_raw_activity().then(function (activity) {
 	    	$scope.activity = activity;
-	    	console.log(activity);
 	    });
 	  };
 	  

@@ -25,7 +25,6 @@ angular.module('clientApp')
 				$scope.logout = function () {
 					LoginService.logout().then(function() {
 						$scope.currentUser.email = null;
-						console.log($scope.currentUser.email);
 						$scope.currentUser = null;
 						$scope.userType = null;
 						$state.go('app');
@@ -33,13 +32,10 @@ angular.module('clientApp')
 				};
 
 				$scope.dashboard = function () {
-					console.log($scope.userType);
-					console.log(typeof $scope.userType);
 					if ($scope.userType === 'doctor') { $state.go('doctors_home'); }
 					else if ($scope.userType === 'admin') { $state.go('app'); }
 					else if ($scope.userType === 'patient') { $state.go('patients_home'); }
 				};
-				console.log($scope.currentUser);
 			}
 		};
 	});

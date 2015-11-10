@@ -4,8 +4,12 @@
 
   <h1>Activity</h1>
   <hr>
-  <ul ng-repeat="act in activity">
-    <li>{{act.activity}}
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a ng-click="tab='graph'">Graph</a></li>
+    <li role="presentation"><a ng-click="tab='list'">List</a></li>
+  </ul>  
+  <ul ng-show="tab==='list' || tab===undefined" ng-repeat="act in data">
+    <li>{{act.data}}
       <ul>
         <li>You burned: {{act.calories_burned}} calories</li>
         <li>Workout time: {{act.duration}}</li>
@@ -13,3 +17,8 @@
       </ul>
     </li>
   </ul>
+  <div ng-show="tab==='graph'">
+    <chart-form></chart-form>
+    <bar-chart height="options.height" data="data" mode="mode" hovered="hovered(args)"></bar-chart>
+
+  </div>

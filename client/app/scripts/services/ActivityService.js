@@ -5,6 +5,19 @@ angular.module('clientApp')
 		var currentUser = LoginService.getEmail();
 		var userType = LoginService.getType();
 
+		var self = this;
+		this.activity_for_all_users = function () {
+			var deferred = $q.defer();
+			var func;
+			if (userType === 'patient') func = self.get_all_activity;
+		  else if (userType === 'doctor') func = self.get_all_activity_fromDoc;
+		  else if (userType === 'admin') func = self.get_all_activity_fromAdmin;
+	  	func().then(function (activity) {
+	  		deferred.resolve(activity);
+	  	});
+	  	return deferred.promise;
+		}
+
 		this.get_all_activity = function () {
 			var deferred = $q.defer();
 			$http({
@@ -49,11 +62,13 @@ angular.module('clientApp')
 
 		this.get_all_activity_fromDoc = function (patient_email) {
 			var deferred = $q.defer();
+			console.log("https://dev.api.wsuhealth.wsu.edu:5025/doctor/data/"+patient_email);
 			$http({
 				method: "GET",
 				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctor/data/"+patient_email,
 			})
 			.then(function(res) {
+				console.log(res.data);
 				deferred.resolve(res.data);
 			})
 			.catch(function(error) {
@@ -91,6 +106,7 @@ angular.module('clientApp')
 
 		this.get_all_activity_fromAdmin = function (patient_email) {
 			var deferred = $q.defer();
+			console.log(patient_email);
 			$http({
 				method: "GET",
 				url: "https://dev.api.wsuhealth.wsu.edu:5025/admin/data/"+patient_email,

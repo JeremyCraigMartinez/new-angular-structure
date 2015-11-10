@@ -20,15 +20,15 @@
     <link href="styles/calendar.css" rel="stylesheet" type="text/css">
     <link href="styles/navbar.css" rel="stylesheet" type="text/css">
     <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link href="styles/barchart.css" rel="stylesheet" type="text/css">
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
-<body ng-app="clientApp">
-  <style>
 
-  </style>
+<body ng-app="clientApp">
+
   <div class="well">
     <div class="navbar" data-ng-include=" 'views/partials/navbar.html' "></div>
   </div>
@@ -36,7 +36,7 @@
   <div class="main-app">
     <div ui-view></div>
   </div>
-     
+
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -68,8 +68,11 @@
   <script src="bower_components/angular-ui-indeterminate/dist/indeterminate.js"></script>
   <script src="bower_components/angular-ui-uploader/dist/uploader.js"></script>
   <script src="bower_components/angular-ui-utils/index.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
+
+  <script src="d3/reusable_chart.js"></script>
 
   <script src="scripts/app.js"></script>
   <script src="scripts/config.router.js"></script>
@@ -91,12 +94,12 @@
   <script src="scripts/controllers/PatientsHome/RawActivityCtrl.js"></script>
   <script src="scripts/controllers/AdminHome/AdminPatientsCtrl.js"></script>
   <script src="scripts/controllers/AdminHome/AdminDoctorsCtrl.js"></script>
-  <script src="scripts/controllers/PatientProfile/PatientProfile-DietCtrl.js"></script>
-  <script src="scripts/controllers/PatientProfile/PatientProfile-ActivityCtrl.js"></script>
 
   <!-- Directives -->
   <script src="scripts/directives/navbar.js"></script>
   <script src="scripts/directives/login.js"></script>
+  <script src="scripts/directives/barChart.js"></script>
+  <script src="scripts/directives/chartForm.js"></script>
 
   <!-- Services -->
   <script src="scripts/services/Base64.js"></script>

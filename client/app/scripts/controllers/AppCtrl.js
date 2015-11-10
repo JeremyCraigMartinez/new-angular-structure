@@ -14,5 +14,4 @@ angular.module('clientApp')
       'AngularJS',
       'Karma'
     ];
-    console.log('Home');
   });

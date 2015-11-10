@@ -14,7 +14,6 @@ angular.module('clientApp')
         }
         $q.all(all).then(function (info) {
           $scope.doctors = info;
-          console.log(info);
         });
       });
 

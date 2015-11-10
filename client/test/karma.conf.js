@@ -51,6 +51,7 @@ module.exports = function(config) {
       'bower_components/angular-ui-indeterminate/dist/indeterminate.js',
       'bower_components/angular-ui-uploader/dist/uploader.js',
       'bower_components/angular-ui-utils/index.js',
+      'bower_components/d3/d3.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

@@ -19,7 +19,7 @@
 		</div>
   </div><!-- /row -->
 	<div>
-		<a ui-sref="patient_profile.activity" style="text-decoration:none;">
+		<!--<a ui-sref="patient_profile.activity" style="text-decoration:none;">
 			<button class="btn btn-primary" type="button">
 				Recent Activity <span class="glyphicon glyphicon-heart"></span>
 			</button>
@@ -29,9 +29,21 @@
 			<button class="btn btn-success" type="button">
 				Recent Diet <span class="glyphicon glyphicon-cutlery" style="font-style:normal;"></span>
 			</button>
+		</a>-->
+		<a ng-click="tab='activity'" style="text-decoration:none;">
+			<button class="btn btn-primary" type="button">
+				Recent Activity <span class="glyphicon glyphicon-heart"></span>
+			</button>
+		</a>
+		&nbsp;
+		<a ng-click="tab='diet'" style="text-decoration:none;">
+			<button class="btn btn-success" type="button">
+				Recent Diet <span class="glyphicon glyphicon-cutlery" style="font-style:normal;"></span>
+			</button>
 		</a>
 	</div>
 	<br>
 	<hr>
-	<div ui-view></div>
+	<div ng-show="tab==='activity'" data-ng-include=" 'views/partials/patients_home.activity.html' "></div>
+	<div ng-show="tab==='diet'" data-ng-include=" 'views/partials/patients_home.diets.html' "></div>
 	<hr>

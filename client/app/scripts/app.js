@@ -22,5 +22,9 @@ angular.module('clientApp', [
   'angular.morris-chart',
   'ui.utils'
 ])
-  .config(function (uiCalendarConfig) {
+  .config(function ($locationProvider) {
+  	$locationProvider.html5Mode({
+  		enabled: true,
+  		requireBase: false
+  	});
 	});

@@ -16,4 +16,5 @@ clientApp.run(function ($cookies, $http, $rootScope, $location, $state) {
           $state.go('login');
       }
   });
+
 });
