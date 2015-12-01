@@ -1,10 +1,13 @@
 <title>Overview</title>
 
     <div class="main">
-      <h1 class="page-header">Overview</h1>
+      <h1 class="page-header">Groups</h1>
 
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      <button ng-if="userType==='admin'" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
         Add Group
+      </button>
+      <button ng-if="userType!='admin'" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Request New Group
       </button>
 
       <!-- Modal -->
