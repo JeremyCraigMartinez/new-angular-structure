@@ -42,6 +42,7 @@ angular.module('clientApp')
 
 			$scope.selected_groups = [];
 			$scope.setGroup = function(group){
+				if (group === null) return;
 				$scope.groups.splice($scope.groups.indexOf(group),1);
 				$scope.selected_groups.push(group);
 			};
@@ -64,10 +65,8 @@ angular.module('clientApp')
 			$scope.submitSignup = function (signup) {
 				if (signup.type === "doctor") {
 					DoctorService.add_doctor(signup).then(function (error, data) {
-						console.log(signup.email);
-						console.log(signup.pass);
-						LoginService.login(signup.email, signup.pass).then(function (user) {
-							if (user===false) {
+						LoginService.login(signup.email, signup.pass).then(function (user, err) {
+							if (user===false || user.status === 404) {
 								$scope.failedLogin=true;
 								$state.go('login');
 							}
@@ -82,10 +81,8 @@ angular.module('clientApp')
 					signup.doctor = signup.doctor.email;
 					signup.group = $scope.selected_groups;
 					ProfileService.add_patient(signup).then(function (error, data) {
-						console.log(signup.email);
-						console.log(signup.pass);
 						LoginService.login(signup.email, signup.pass).then(function (user) {
-							if (user===false) {
+							if (user===false || user.status === 404) {
 								$scope.failedLogin=true;
 								$state.go('login');
 							}
@@ -101,12 +98,12 @@ angular.module('clientApp')
 			$scope.submitLogin = function() {
 				LoginService.login($scope.signup.email, $scope.signup.pass).then(function (err, user) {
 					if (err) {
+						console.log(err);
 						$scope.failedLogin=true;
-						$state.go('login');
+						//$state.go('login');
 					}
 					else {
 						var type = LoginService.getType();
-						console.log(type);
 						if (type === "doctor") { $state.go('app'); }
 						else if (type === "admin") { $state.go('app'); }
 						else if (type === "patient") { $state.go('app'); }

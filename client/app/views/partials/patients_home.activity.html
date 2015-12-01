@@ -19,6 +19,7 @@
   </ul>
   <div ng-show="tab==='graph'">
     <chart-form></chart-form>
-    <bar-chart height="options.height" data="data" mode="mode" hovered="hovered(args)"></bar-chart>
+    <bar-chart style="display:inline-block" height="options.height" data="data" mode="mode" hovered="hovered(args)"></bar-chart>
+    <p>Y axis: {{yaxis}}</p>
 
   </div>

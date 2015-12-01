@@ -63,6 +63,10 @@ angular.module('clientApp')
 		this.get_all_activity_fromDoc = function (patient_email) {
 			var deferred = $q.defer();
 			console.log("https://dev.api.wsuhealth.wsu.edu:5025/doctor/data/"+patient_email);
+			if (!patient_email) {
+				deferred.reject("error");
+				return deferred.promise;
+			}
 			$http({
 				method: "GET",
 				url: "https://dev.api.wsuhealth.wsu.edu:5025/doctor/data/"+patient_email,

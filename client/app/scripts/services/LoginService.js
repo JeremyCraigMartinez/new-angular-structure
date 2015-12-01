@@ -22,7 +22,7 @@ angular.module('clientApp')
 					deferred.resolve(null, res.data);
 				})
 				.catch(function (error) {
-					service.setToken(null);
+					//service.setToken(null);
 					console.log('auth failed for '+email+":"+password);
 					deferred.resolve(error, null);
 				});

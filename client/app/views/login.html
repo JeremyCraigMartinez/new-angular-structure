@@ -13,7 +13,8 @@
   <div class="bit-65">
 
       <!-- Form: Sign in --> 
-        <h2 class="form-heading">Sign in <span ng-if="failedLogin===true" style="color:red; font-size:medium;">incorrect login</span></h2>
+        <h2 ng-if="!new_member" class="form-heading">Sign in <span ng-if="failedLogin===true" style="color:red; font-size:medium;">incorrect login</span></h2>
+        <h2 ng-if="new_member" class="form-heading">Sign up</h2>
         <form role="form" ng-submit="submit()" role="form">
           <div class="form-group">
             <label for="signup.email" class="control-label">Email</label>

@@ -17,40 +17,26 @@ angular.module('clientApp')
       link: function(scope, element, attrs) {
         var chartEl = d3.select(element[0]);
         chart.on('customHover', function(d, i){
-          scope.hovered({args:d});
+          scope.hovered({args:scope.data[i].created});
         });
 
+        var func = function (d, mode) {
+          var data = [];
+          if (mode === "see duration")
+            for (var i = 0; d && i < d.length; i++)
+              data.push(d[i].calories_burned);
+          else
+            for (var i = 0; d && i < d.length; i++)
+              data.push(d[i].duration);
+          return data;
+        }
+
         scope.$watch('mode', function (newVal, oldVal) {
-          var data;
-          var calories = [];
-          var duration = [];
-          for (var i = 0; scope.data && i < scope.data.length; i++) {
-            calories.push(scope.data[i].calories_burned);
-          }
-          for (var i = 0; scope.data && i < scope.data.length; i++) {
-            duration.push(scope.data[i].duration);
-          }
-          if (scope.mode === "see duration") data = duration;
-          else data = calories;
-          chartEl.datum(data).call(chart);
+          chartEl.datum(func(scope.data, scope.mode)).call(chart);
         });
 
         scope.$watch('data', function (newVal, oldVal) {
-          var data;
-          var calories = [];
-          var duration = [];
-          var dates = [];
-          for (var i = 0; scope.data && i < scope.data.length; i++) {
-            calories.push(scope.data[i].calories_burned);
-            dates.push(scope.data[i].created);
-          }
-          for (var i = 0; scope.data && i < scope.data.length; i++) {
-            duration.push(scope.data[i].duration);
-            dates.push(scope.data[i].created);
-          }
-          if (scope.mode === "see duration") data = duration;
-          else data = calories;
-          chartEl.datum(data).call(chart);
+          chartEl.datum(func(scope.data, scope.mode)).call(chart);
         });
 
         scope.$watch('height', function(d, i){

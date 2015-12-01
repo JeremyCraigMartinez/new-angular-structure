@@ -13,8 +13,11 @@ angular.module('clientApp')
 				deferred.resolve(null, res.data);
 			})
 			.catch(function(error) {
-				console.log('patient signup error');
-				console.log(error);
+				var error_msg = "";
+				for (var field in error.data)
+					error_msg += error.data[field].message + "\n";
+				console.log(error_msg);
+				alert(error_msg);
 				deferred.resolve(error, null);
 			});
 			return deferred.promise;

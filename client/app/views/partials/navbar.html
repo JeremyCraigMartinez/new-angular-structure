@@ -6,7 +6,8 @@
       <ul class="nav navbar-nav">
         <li class="navbar-li not-hoverable"><img class="main-logo" src="images/ireach.PNG" alt="ireach logo" style="width:146px;"></li>
         <li class="navbar-li"><a ui-sref="app">Home</a></li>
-        <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='doctor' || userType==='patient'" href="#" ng-click="dashboard()">Dashboard</a></li>
+        <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='doctor'" href="#" ui-sref="doctors_home">Dashboard</a></li>
+        <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='patient'" href="#" ui-sref="patients_home">Dashboard</a></li>
         <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='doctor' || userType==='admin'" href="#" ui-sref="groups">Groups</a></li>            
         <li class="navbar-li"><a class="navbar-brand" ng-if="userType==='admin'" ui-sref="admin">Admin</a></li>
       </ul>
